@@ -23,10 +23,9 @@ Angular 2 multiselect dropdown component for web applications. Easy to integrate
 ##### 7. Reactive Forms support
 ##### 8. Settings configuration
 ##### 9. Callbacks and events
-##### 10. Lazy lodaing - handle large data lists
-##### 11. Group By feature
-##### 12. Search filter for both plain list and grouped list
-##### 13. Custom Search / Search API
+##### 10. Group By feature
+##### 11. Search filter for both plain list and grouped list
+##### 12. Custom Search / Search API
 
 
 
@@ -248,7 +247,6 @@ The following list of settings are supported by the component. Configure the set
 | position | String | Set the position of the dropdown list to 'top' or 'bottom'| bottom |
 | noDataLabel | String | Label text when no data is available in the list| 'No Data Available' |
 | searchBy | Array | Search the list by certain properties of the list item. Ex: ["itemName, "id","name"]. Deafult is , it will search the list by all the properties of list item | [] |
-| lazyLoading | Boolean | Enable lazy loading. Used to render large datasets. | false |
 | showCheckbox | Boolean | Show or hide checkboxes in the list | true |
 | addNewItemOnFilter | Boolean | Whe you filter items and if, the item is not found, you can add the text as new item to the list | false |
 | addNewButtonText | String | The text in the button when `addNewItemOnFilter` is enabled | 'Add' |

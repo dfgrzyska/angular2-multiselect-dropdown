@@ -20,14 +20,12 @@ import { StylingExample } from './examples/styling';
 import { ng2Gist } from './examples/gist';
 import { UsingWithFormExample } from './examples/usingWithForms';
 import { UsingWithReactiveFormExample } from './examples/usingInReactForms';
-import { LazyLoadingExample } from './examples/lazyLoading';
 import { MultipleDropdownsExample } from './examples/multipleDropdowns';
 import { DynamicDataSetsExample } from './examples/dynamicDataSets';
 import { ThemingExample } from './examples/theming';
 import { RemoteDataExample } from './examples/remoteData';
 import { CustomSearchExample } from './examples/customSearch';
 import { SearchFilterByOnePropertyExample } from './examples/searchByOneProperty';
-import {LazyLoadingRemoteDataExample } from './examples/lazyLoadingRemoteData';
 import {SearchFilterAddItemExample } from './examples/searchFilterAddNewItem';
 import { EventsExample } from './examples/events';
 import { HighlightModule } from 'ngx-highlightjs';
@@ -58,14 +56,12 @@ import { AdsenseModule } from 'ng2-adsense';
     StylingExample,
     UsingWithFormExample,
     UsingWithReactiveFormExample,
-    LazyLoadingExample,
     MultipleDropdownsExample,
     DynamicDataSetsExample,
     ThemingExample,
     RemoteDataExample,
     CustomSearchExample,
     SearchFilterByOnePropertyExample,
-    LazyLoadingRemoteDataExample,
     SearchFilterAddItemExample,
     EventsExample,
     UsingInListExample,

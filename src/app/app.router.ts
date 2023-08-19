@@ -1,7 +1,5 @@
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule } from "@angular/core";
-
-import { AppComponent } from "./app.component";
 import { BasicExample } from "./examples/basic";
 import { SingleSelectionExample } from "./examples/singleselection";
 import { GroupByExample } from "./examples/groupBy";
@@ -15,14 +13,11 @@ import { CustomPlaceholderExample } from "./examples/customplaceholder";
 import { StylingExample } from "./examples/styling";
 import { UsingWithFormExample } from "./examples/usingWithForms";
 import { UsingWithReactiveFormExample } from "./examples/usingInReactForms";
-import { LazyLoadingExample } from "./examples/lazyLoading";
 import { MultipleDropdownsExample } from "./examples/multipleDropdowns";
 import { DynamicDataSetsExample } from "./examples/dynamicDataSets";
-import { ThemingExample } from "./examples/theming";
 import { RemoteDataExample } from "./examples/remoteData";
 import { CustomSearchExample } from "./examples/customSearch";
 import { SearchFilterByOnePropertyExample } from "./examples/searchByOneProperty";
-import { LazyLoadingRemoteDataExample } from "./examples/lazyLoadingRemoteData";
 import { SearchFilterAddItemExample } from "./examples/searchFilterAddNewItem";
 import { EventsExample } from "./examples/events";
 import { UsingInListExample } from "./examples/usingInList";
@@ -157,32 +152,6 @@ const appRoutes: Routes = [
       csstitle: "",
       tsgist: "CuppaLabs/f0dfe353c6378cee7f55547395a80fc4",
       htmlgist: "CuppaLabs/0a32c3d76110468b84bac01fd64488bc",
-      cssgist: false,
-    },
-  },
-  {
-    path: "lazyloading",
-    component: LazyLoadingExample,
-    data: {
-      label: "Virtual Scrolling",
-      tstitle: "lazyLoading.ts",
-      htmltitle: "lazyLoading.html",
-      csstitle: "",
-      tsgist: "CuppaLabs/aab6c8b30a6901af01249c474f3f0cbd",
-      htmlgist: "CuppaLabs/c77fea947ef053aa22973fcd9c7c612a",
-      cssgist: false,
-    },
-  },
-  {
-    path: "lazyloadingRemoteData",
-    component: LazyLoadingRemoteDataExample,
-    data: {
-      label: "Lazy Loading from API",
-      tstitle: "lazyLoadingRemoteData.ts",
-      htmltitle: "lazyLoadingRemoteData.html",
-      csstitle: "",
-      tsgist: "CuppaLabs/3833720c12e23f6c8ee5fd870e38ad5b",
-      htmlgist: "CuppaLabs/72ebd8cfa40a23a74ccbeda6de98a1e8",
       cssgist: false,
     },
   },
