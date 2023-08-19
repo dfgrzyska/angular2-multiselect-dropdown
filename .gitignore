@@ -45,3 +45,4 @@ testem.log
 .DS_Store
 Thumbs.db
 /projects/angular2-multiselect-dropdown-lib/node_modules/
+/.angular/

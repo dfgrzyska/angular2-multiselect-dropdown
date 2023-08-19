@@ -100,11 +100,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     onScroll(event: any) {
         if (this.isActive && this.settings.tagToBody) {
             this.closeDropdown();
-            /*             const elem = this.cuppaDropdown.nativeElement;
-                        if(this.settings.autoPosition){
-                            this.dropDownTop = elem.getBoundingClientRect().y + elem.clientHeight + 1;
-                        }
-                        this.dropDownLeft = elem.getBoundingClientRect().x; */
         }
     }
 
@@ -210,8 +205,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         if (changes.settings && !changes.settings.firstChange) {
             this.settings = Object.assign(this.defaultSettings, this.settings);
         }
-        if (changes.loading) {
-        }
     }
     ngDoCheck() {
         if (this.selectedItems) {
@@ -226,7 +219,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.selectedListHeight.val = this.selectedListElem.nativeElement.clientHeight;
             this.cdr.detectChanges();
         }
-        //this.calculateDropdownDirection();
     }
     onItemClick(item: any, index: number, evt: Event) {
         if (item.disabled) {
@@ -238,7 +230,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         }
 
         let found = this.isSelected(item);
-        let limit = this.selectedItems.length < this.settings.limitSelection ? true : false;
+        let limit = this.selectedItems.length < this.settings.limitSelection;
 
         if (!found) {
             if (this.settings.limitSelection) {
@@ -476,13 +468,10 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             if (obj[this.settings.labelKey].toLowerCase().indexOf(this.filter.toLowerCase()) > -1) {
                 return arr;
             }
-            else {
-                return arr.some(cat => {
-                    return cat[this.settings.labelKey].toLowerCase().indexOf(this.filter.toLowerCase()) > -1;
-                }
-                )
-            }
 
+            return arr.some(cat => {
+                return cat[this.settings.labelKey].toLowerCase().indexOf(this.filter.toLowerCase()) > -1;
+            })
         });
     }
     toggleFilterSelectAll() {
@@ -609,15 +598,13 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.data = data;
     }
     cloneArray(arr: any) {
-        let i, copy;
-
         if (Array.isArray(arr)) {
             return JSON.parse(JSON.stringify(arr));
-        } else if (typeof arr === 'object') {
-            throw 'Cannot clone array containing an object!';
-        } else {
-            return arr;
         }
+        if (typeof arr === 'object') {
+            throw 'Cannot clone array containing an object!';
+        }
+        return arr;
     }
     updateGroupInfo(item: any) {
         if (item.disabled) {
@@ -777,11 +764,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.infiniteFilterLength = 0;
     }
     onScrollEnd(e: any) {
-        if (e.endIndex === this.data.length - 1 || e.startIndex === 0) {
-
-        }
         this.onScrollToEnd.emit(e);
-
     }
     ngOnDestroy() {
         if (this.subscription) {
@@ -813,17 +796,13 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             });
             this.onGroupSelect.emit(item);
             this.updateGroupInfo(item);
-
         }
-
-
     }
     addFilterNewItem() {
         this.onAddFilterNewItem.emit(this.filter);
         this.filterPipe.transform(this.data, this.filter, this.settings.searchBy);
     }
     calculateDropdownDirection() {
-        let shouldOpenTowardsTop = this.settings.position == 'top';
         const elem = this.cuppaDropdown.nativeElement;
         const dropdownWidth = elem.clientWidth;
         this.dropDownWidth = dropdownWidth;
@@ -847,14 +826,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             else {
                 this.openTowardsTop(false);
             }
-            // Keep preference if there is not enough space on either the top or bottom
-            /* 			if (spaceOnTop || spaceOnBottom) {
-                            if (shouldOpenTowardsTop) {
-                                shouldOpenTowardsTop = spaceOnTop;
-                            } else {
-                                shouldOpenTowardsTop = !spaceOnBottom;
-                            }
-                        } */
         }
 
     }
