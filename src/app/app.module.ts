@@ -37,7 +37,6 @@ import { CheckForUpdateService } from './check-for-update.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogContentExampleDialog, UsingWithinDialog } from './examples/usingWithinDialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
     declarations: [
@@ -76,7 +75,6 @@ import { AdsenseModule } from 'ng2-adsense';
         AppRouterModule,
         AngularMultiSelectModule,
         HttpClientModule,
-        AdsenseModule.forRoot(),
         NgbModule,
         HighlightModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
