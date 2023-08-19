@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ChangeDetectionStrategy, OnDestroy, NgModule, SimpleChanges, OnChanges, ChangeDetectorRef, AfterViewChecked, ViewEncapsulation, ContentChild, ViewChild, forwardRef, Input, Output, EventEmitter, ElementRef, AfterViewInit, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, NgModule, SimpleChanges, OnChanges, ChangeDetectorRef, AfterViewChecked, ViewEncapsulation, ContentChild, ViewChild, forwardRef, Input, Output, EventEmitter, ElementRef, AfterViewInit, Pipe, PipeTransform } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR, ControlValueAccessor, NG_VALIDATORS, Validator, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MyException } from './multiselect.model';
@@ -8,8 +8,7 @@ import { ListFilterPipe } from './list-filter';
 import { Item, Badge, Search, TemplateRenderer, CIcon } from './menu-item';
 import { DataService } from './multiselect.service';
 import { Subscription, Subject } from 'rxjs';
-import { VirtualScrollerModule, VirtualScrollerComponent } from './virtual-scroll/virtual-scroll';
-import { map, debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
 
 export const DROPDOWN_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
@@ -119,20 +118,12 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     public isInfiniteFilterSelectAll: boolean = false;
     public groupedData: Array<any>;
     filter: any;
-    public chunkArray: any[];
     public scrollTop: any;
     public chunkIndex: any[] = [];
     public cachedItems: any[] = [];
     public groupCachedItems: any[] = [];
-    public totalRows: any;
     public itemHeight: any = 41.6;
-    public screenItemsLen: any;
-    public cachedItemsLen: any;
-    public totalHeight: any;
     public scroller: any;
-    public maxBuffer: any;
-    public lastScrolled: any;
-    public lastRepaintY: any;
     public selectedListHeight: any;
     public filterLength: any = 0;
     public infiniteFilterLength: any = 0;
@@ -163,7 +154,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         showCheckbox: true,
         noDataLabel: 'No Data Available',
         searchAutofocus: true,
-        lazyLoading: false,
         labelKey: 'itemName',
         primaryKey: 'id',
         position: 'bottom',
@@ -177,11 +167,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         tagToBody: true
     }
     randomSize: boolean = true;
-    public parseError: boolean;
     public filteredList: any = [];
-    virtualScroollInit: boolean = false;
-    @ViewChild(VirtualScrollerComponent, { static: false })
-    private virtualScroller: VirtualScrollerComponent;
     public isDisabledItemPresent = false;
 
     constructor(public _elementRef: ElementRef, private cdr: ChangeDetectorRef, private filterPipe: ListFilterPipe) {
@@ -206,7 +192,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         setTimeout(() => {
             this.calculateDropdownDirection();
         });
-        this.virtualScroollInit = false;
     }
     onKeyUp(evt: any){
         this.searchTerm$.next((<HTMLInputElement>evt.target).value);
@@ -227,9 +212,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         }
         if (changes.loading) {
         }
-        if (this.settings.lazyLoading && this.virtualScroollInit && changes.data) {
-            this.virtualdata = changes.data.currentValue;
-        }
     }
     ngDoCheck() {
         if (this.selectedItems) {
@@ -238,11 +220,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             }
         }
     }
-    ngAfterViewInit() {
-        if (this.settings.lazyLoading) {
-            // this._elementRef.nativeElement.getElementsByClassName("lazyContainer")[0].addEventListener('scroll', this.onScroll.bind(this));
-        }
-    }
+
     ngAfterViewChecked() {
         if (this.selectedListElem.nativeElement.clientHeight && this.settings.position == 'top' && this.selectedListHeight) {
             this.selectedListHeight.val = this.selectedListElem.nativeElement.clientHeight;
@@ -400,10 +378,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         else {
             this.closeDropdown()
         }
-        if (this.settings.lazyLoading) {
-            this.virtualdata = this.data;
-            this.virtualScroollInit = true;
-        }
+
         evt.preventDefault();
     }
     public openDropdown() {
@@ -420,9 +395,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
         this.onOpen.emit(true);
     }
     public closeDropdown() {
-        if (this.searchInput && this.settings.lazyLoading) {
-            this.searchInput.nativeElement.value = "";
-        }
         if (this.searchInput) {
             this.searchInput.nativeElement.value = "";
         }
@@ -433,9 +405,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
     }
     public closeDropdownOnClickOut() {
         if (this.isActive) {
-            if (this.searchInput && this.settings.lazyLoading) {
-                this.searchInput.nativeElement.value = "";
-            }
             if (this.searchInput) {
                 this.searchInput.nativeElement.value = "";
             }
@@ -797,9 +766,6 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
             this.virtualdata = this.cachedItems;
             this.infiniteFilterLength = 0;
         }
-        if(this.virtualScroller){
-            this.virtualScroller.refresh();
-        }
     }
     resetInfiniteSearch() {
         this.filter = "";
@@ -950,7 +916,7 @@ export class AngularMultiSelect implements OnInit, ControlValueAccessor, OnChang
 }
 
 @NgModule({
-    imports: [CommonModule, FormsModule, VirtualScrollerModule],
+    imports: [CommonModule, FormsModule],
     declarations: [AngularMultiSelect, ClickOutsideDirective, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, CIcon],
     exports: [AngularMultiSelect, ClickOutsideDirective, ScrollDirective, styleDirective, ListFilterPipe, Item, TemplateRenderer, Badge, Search, setPosition, CIcon],
     providers: [DataService, ListFilterPipe]
