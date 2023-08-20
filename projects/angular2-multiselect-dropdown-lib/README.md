@@ -1,11 +1,8 @@
-# Angular 2/4/6/8 Multiselect Dropdown
-[![npm version](https://img.shields.io/npm/v/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)
-[![downloads](https://img.shields.io/npm/dt/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)
-[![license](https://img.shields.io/github/license/cuppalabs/angular2-multiselect-dropdown.svg)](https://www.npmjs.com/package/angular2-multiselect-dropdown)
+# Angular 15 Multiselect Dropdown
+
+This fork doesn't support lazy loading.
 
 Angular 2 multiselect dropdown component for web applications. Easy to integrate and use.
-
-![](https://cuppalabs.github.io/angular2-multiselect-dropdown/assets/img/multiselect.jpeg)
 
 # Important Notice !! 
 #####  From v3.0.0 onwards, you need to include `default.theme.css` file to get the basic styling of the dropdown. Refer to `themes and theming` section below
@@ -23,10 +20,9 @@ Angular 2 multiselect dropdown component for web applications. Easy to integrate
 ##### 7. Reactive Forms support
 ##### 8. Settings configuration
 ##### 9. Callbacks and events
-##### 10. Lazy lodaing - handle large data lists
-##### 11. Group By feature
-##### 12. Search filter for both plain list and grouped list
-##### 13. Custom Search / Search API
+##### 10. Group By feature
+##### 11. Search filter for both plain list and grouped list
+##### 12. Custom Search / Search API
 
 
 
