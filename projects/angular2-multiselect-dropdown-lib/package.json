@@ -1,7 +1,7 @@
 {
   "$schema": "../../node_modules/ng-packagr/package.schema.json",
   "name":"angular2-multiselect-dropdown-dg",
-  "version":"6.0.0",
+  "version":"6.0.1",
   "license": "MIT",
   "author": "Pradeep Terli|Damian Grzyska",
   "description": "Angular Multiselct dropdown component library for Angular version 15 ",
@@ -10,19 +10,6 @@
     "angular dropdown",
     "angular 15 dropdown multiselect"
   ],
-  "ngPackage": {
-    "lib": {
-      "entryFile": "src/public_api.ts"
-    },
-    "allowedNonPeerDependencies": ["@tweenjs/tween.js"],
-    "assets": [
-      "README.md",
-      "LICENSE",
-      "./themes/*.theme.scss",
-      "./themes/*.theme.css"
-    ],
-    "dest": "../../dist"
-  },
   "peerDependencies": {
   },
   "dependencies": {
