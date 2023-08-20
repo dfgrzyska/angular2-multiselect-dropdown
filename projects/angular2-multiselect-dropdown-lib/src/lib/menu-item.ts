@@ -1,16 +1,14 @@
-import { Component, OnInit, OnDestroy, NgModule, TemplateRef, AfterContentInit, ContentChild, EmbeddedViewRef, OnChanges, ViewContainerRef, ViewEncapsulation, Input, Output, EventEmitter, ElementRef, AfterViewInit, Pipe, PipeTransform, Directive } from '@angular/core';
-import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import { CommonModule }       from '@angular/common';
+import { Component, OnInit, OnDestroy, TemplateRef, ContentChild, EmbeddedViewRef, ViewContainerRef, ViewEncapsulation, Input } from '@angular/core';
 
 @Component({
   selector: 'c-item',
   template: ``
 })
 
-export class Item { 
+export class Item {
 
     @ContentChild(TemplateRef, {static: true}) template: TemplateRef<any>
-    constructor() {   
+    constructor() {
     }
 
 }
@@ -20,10 +18,10 @@ export class Item {
   template: ``
 })
 
-export class Badge { 
+export class Badge {
 
     @ContentChild(TemplateRef, {static: true}) template: TemplateRef<any>
-    constructor() {   
+    constructor() {
     }
 
 }
@@ -33,10 +31,10 @@ export class Badge {
   template: ``
 })
 
-export class Search { 
+export class Search {
 
     @ContentChild(TemplateRef, {static: true}) template: TemplateRef<any>
-    constructor() {   
+    constructor() {
     }
 
 }
@@ -45,13 +43,13 @@ export class Search {
   template: ``
 })
 
-export class TemplateRenderer implements OnInit, OnDestroy { 
+export class TemplateRenderer implements OnInit, OnDestroy {
 
     @Input() data: any
     @Input() item: any
     view: EmbeddedViewRef<any>;
 
-    constructor(public viewContainer: ViewContainerRef) {   
+    constructor(public viewContainer: ViewContainerRef) {
     }
     ngOnInit() {
         this.view = this.viewContainer.createEmbeddedView(this.data.template, {
@@ -59,7 +57,7 @@ export class TemplateRenderer implements OnInit, OnDestroy {
             'item':this.item
         });
     }
-	
+
     ngOnDestroy() {
 		this.view.destroy();
 	}
@@ -135,7 +133,7 @@ export class TemplateRenderer implements OnInit, OnDestroy {
 
 })
 
-export class CIcon { 
+export class CIcon {
 
     @Input() name:any;
 
