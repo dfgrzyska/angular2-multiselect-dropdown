@@ -10,6 +10,14 @@ Angular 2 multiselect dropdown component for web applications. Easy to integrate
 # Important Notice !! 
 #####  From v3.0.0 onwards, you need to include `default.theme.css` file to get the basic styling of the dropdown. Refer to `themes and theming` section below
 
+# LAZY loading is not supported
+
+# Publish
+`ng build angular2-multiselect-dropdown-lib`
+
+in dist dir:
+`npm publish --access public`
+
 
 # [Documentation](http://cuppalabs.github.io/components/multiselectDropdown) | [Demos / Examples](https://cuppalabs.github.io/angular2-multiselect-dropdown).
 
